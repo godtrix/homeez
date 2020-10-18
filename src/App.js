@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { API } from 'aws-amplify';
+import { API, Storage } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
-import { Storage } from 'aws-amplify';
 
 const initialFormState = { name: '', description: '' }
 
@@ -92,7 +91,7 @@ function App() {
               <p>{note.description}</p>
               <button onClick={() => deleteNote(note)}>Delete note</button>
               {
-                note.image && <img src={note.image} style={{width: 400}} alt="" />
+                note.image && <img src={note.image} style={{width: 400}} alt="image" />
               }
             </div>
           ))
